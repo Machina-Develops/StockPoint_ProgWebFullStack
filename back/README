@@ -1,0 +1,19 @@
+# StokPoint — Gestión de Stock (Esqueleto)
+
+**Objetivo:** app web simple para gestionar inventario (Productos y Movimientos).
+
+## Tecnologías (fase inicial)
+- Frontend: HTML5 + CSS + JS (sin framework por ahora).
+- Backend: a definir (placeholder).
+- DB: a definir (MySQL en etapa posterior).
+
+## Estructura
+Ver `/front` (páginas y assets) y `/back` (placeholder).
+
+## Plan de menú (MVP)
+- Inicio
+- Productos (ABM simple)
+- Movimientos (Entradas/Salidas)
+- Login
+- Contacto
+
