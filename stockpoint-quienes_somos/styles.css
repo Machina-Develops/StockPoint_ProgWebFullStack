@@ -1,0 +1,168 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #fafafa;
+}
+
+/* Contenedores centrales */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.container1 {
+  width: 90%;
+  max-width: 1000px;    
+  margin: 0 auto;        
+  padding: 0 8px;        
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.container1 p{
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 65ch;
+}
+.container2{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 40px;
+  margin-left: 20px;
+}
+
+/* Encabezado y navegación */
+.site-header {
+  background-color: #FDF6E3;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #0a0a59;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  font-family:'Poppins', sans-serif;
+  text-decoration: none;
+  color: #0a0a59;
+  font-weight: 500;
+}
+
+/* Sección "Quiénes Somos" principal */
+.about-hero {
+  background-color: #fdf6e3;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.about-hero h2 {
+  color: #0a0a59;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;     /* tamaño base en mobile */
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Misión y valores */
+.mission-values {
+  background-color: #fff;
+  padding: 60px 0;
+ 
+}
+
+.mission, .values {
+  margin-bottom: 40px;
+  width: 50%;
+}
+
+.mission h3, .values h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #0a0a59;
+}
+
+.mission p {
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* Lista de valores */
+.values-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.value-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.value-item h4 {
+  font-size: 1.3rem;
+  color: #0a0a59;
+}
+
+.value-item p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Pie de página */
+.site-footer {
+  background-color: #0a0a59;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+}
+
+/* Tablet */
+@media (min-width: 768px){
+  .about-hero{ padding: 40px 0; }
+  .about-hero h2{ font-size: 2rem; }
+  .container1 p{ font-size: 1.0625rem; } /* 17px aprox */
+}
+
+@media (min-width: 992px){
+  .about-hero{ padding: 64px 0; }
+  .about-hero h2{ font-size: 2.25rem; }
+  .container1 p{ font-size: 1.125rem; }
+}
