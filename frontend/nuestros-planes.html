@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <title>Planes de StockPoint</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f3e8cf;
+      --card: #ffffff;
+      --outline: #0a1b2a;
+      --text: #0b1b2a;
+      --muted:#5d7a88;
+      --btn:#3a9dbb;
+      --btnText:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, Arial;
+      background: linear-gradient(#f7e9c6, #f0e0af);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+    }
+    .container{
+      width: min(1100px, 92%);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding: 40px 0;
+    }
+    .card{
+      background: var(--card);
+      border: 4px solid #0b1b2a;
+      border-radius: 20px;
+      padding: 22px 20px 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .card-header{
+      text-align:center;
+      font-weight:700;
+      font-size: 28px;
+      padding: 6px 0 14px;
+    }
+    .price{
+      text-align:center;
+      font-size: 38px;
+      font-weight: 800;
+      margin: 6px 0 16px;
+      color:#0b1b2a;
+    }
+    .per{ font-size:14px; font-weight:600; opacity:.8; }
+    .features{
+      list-style: none;
+      padding:0;
+      margin: 6px 0 18px;
+    }
+    .features li{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:6px 0;
+      border-bottom:1px solid #e6eef4;
+      font-size: 14px;
+    }
+    .features li:before{
+      content:"";
+      width:12px; height:12px;
+      border-radius:3px;
+      background:#3fb7b7;
+      display:inline-block;
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+    .btn{
+      margin: auto;
+      display:inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: none;
+      background: #32a5ac;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      text-align:center;
+      transition: transform .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    @media (max-width: 980px){
+      .container{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px){
+      .container{ grid-template-columns: 1fr; }
+      h1 {
+        font-size: 2rem;
+        margin-top: 20px;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Planes de StockPoint</h1>
+
+  <main class="container" aria-label="Planes de servicio">
+    <!-- Tarjeta Basic -->
+    <section class="card" aria-label="Plan Basic">
+      <div class="card-header">Basic</div>
+      <div class="price">$19<span class="per">/mes</span></div>
+      <ul class="features" aria-label="Características del plan Basic">
+        <li>Gestión de inventarios</li>
+        <li>Seguimiento de pedidos</li>
+        <li>Informes básicos</li>
+      </ul><br><br><br>
+    
+
+
+      <button class="btn" type="button">Elegir</button>
+    </section>
+
+    <!-- Tarjeta Standard -->
+    <section class="card" aria-label="Plan Standard">
+      <div class="card-header">Standard</div>
+      <div class="price">$39<span class="per">/mes</span></div>
+      <ul class="features" aria-label="Características del plan Standard">
+        <li>Gestión de inventarios</li>
+        <li>Seguimiento de pedidos</li>
+        <li>Informes básicos</li>
+        <li>Alertas de stock</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <button class="btn" type="button">Elegir</button>
+    </section>
+
+    <!-- Tarjeta Pro -->
+    <section class="card" aria-label="Plan Pro">
+      <div class="card-header">Pro</div>
+      <div class="price">$59<span class="per">/mes</span></div>
+      <ul class="features" aria-label="Características del plan Pro">
+        <li>Gestión de inventarios</li>
+        <li>Seguimiento de pedidos</li>
+        <li>Informes de stock</li>
+        <li>Alertas de stock</li>
+        <li>Soporte prioritario</li>
+        <li>Informes avanzados</li>
+      </ul>
+      <button class="btn" type="button">Elegir</button>
+    </section>
+  </main>
+<!-- Code injected by live-server -->
+<script>
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+        (function () {
+            function refreshCSS() {
+                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                var head = document.getElementsByTagName("head")[0];
+                for (var i = 0; i < sheets.length; ++i) {
+                    var elem = sheets[i];
+                    var parent = elem.parentElement || head;
+                    parent.removeChild(elem);
+                    var rel = elem.rel;
+                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                    }
+                    parent.appendChild(elem);
+                }
+            }
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+                if (msg.data == 'reload') window.location.reload();
+                else if (msg.data == 'refreshcss') refreshCSS();
+            };
+            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                console.log('Live reload enabled.');
+                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+            }
+        })();
+    }
+    else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+</script>
+</body>
+</html>

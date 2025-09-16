@@ -1,0 +1,296 @@
+/* 
+   StockPoint — Estilos unificados (Home/Quiénes somos, Planes, Contacto)
+   Tipografías: Atkinson Hyperlegible (títulos) / Space Grotesk (cuerpo/botones)
+   Paleta:
+     Primario (Navy)   #2F3C7E
+     Secundario (Azul) #0077A7
+     Fondo (Crema)     #FFF8EE
+     Acento (Arena)    #F8E7C7
+     Texto base        #1F1F1F
+     Acción (Teal)     #0EA5A5
+  */
+
+/* Google Fonts (títulos + cuerpo/botones) */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@400;600&display=swap');
+
+/* ===== Tokens ===== */
+:root{
+  /* Colores */
+  --color-primario:   #2F3C7E;
+  --color-secundario: #0077A7;
+  --color-fondo:      #FFF8EE;
+  --color-acento:     #F8E7C7;
+  --color-texto:      #1F1F1F;
+  --color-accion:     #0EA5A5; /* Botón primario */
+  --color-accion-hov: #0c8f8f; /* hover un toque más oscuro */
+  --color-borde:      #d7cdbb;
+  --color-input-bg:   #FFFFFF;
+
+  /* Tipografías (fallbacks recomendados) */
+  --ff-titulos: 'Atkinson Hyperlegible', 'Space Grotesk', Inter, Arial, sans-serif;
+  --ff-base:    'Space Grotesk', Inter, Arial, sans-serif;
+
+  /* Escalas tipográficas */
+  --h1-size: 36px; --h1-lh: 1.2;
+  --h2-size: 28px; --h2-lh: 1.3;
+  --h3-size: 22px; --h3-lh: 1.35;
+  --p-size:  16px; --p-lh:  1.5;
+
+  /* Botones */
+  --btn-size:14px; --btn-weight: 600; --btn-ls: 0.5px;
+
+  /* UI */
+  --radius: 12px;
+  --shadow-soft: 0 6px 16px rgba(0,0,0,.06);
+}
+
+/* ===== Base ===== */
+html, body{
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--ff-base);
+  font-size: var(--p-size);
+  line-height: var(--p-lh);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+h1, h2, h3{
+  font-family: var(--ff-titulos);
+  font-weight: 700;
+  color: var(--color-primario);
+  margin-bottom: .5em;
+}
+h1{ font-size: var(--h1-size); line-height: var(--h1-lh); }
+h2{ font-size: var(--h2-size); line-height: var(--h2-lh); }
+h3{ font-size: var(--h3-size); line-height: var(--h3-lh); }
+
+p{ margin: 0 0 1rem; }
+
+a{
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+a:hover, a:focus{ text-decoration: underline; }
+
+/* ===== Layout común: Header / Nav / Footer ===== */
+.site-header{
+  background:#fff;
+  border-bottom: 1px solid var(--color-borde);
+}
+.site-header .container,
+header .container{
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: .75rem 1rem;
+  display:flex; align-items:center; gap: 2rem;
+}
+.logo, .navbar-brand{
+  font-family: var(--ff-titulos);
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0;
+}
+.main-nav ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; gap:1rem; flex-wrap: wrap;
+}
+.main-nav a{ color: var(--color-primario); font-weight:600; }
+.main-nav a:hover{ color: var(--color-secundario); }
+
+.site-footer{
+  background:#fff;
+  border-top: 1px solid var(--color-borde);
+}
+.site-footer .container3,
+footer .container{
+  max-width:1140px;
+  margin:0 auto;
+  padding:1rem;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:.95rem;
+}
+
+/* ===== Secciones Home / Quiénes somos (index.html) ===== */
+.about-hero, .hero{
+  background: var(--color-acento);
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+.about-hero .container1,
+.mission-values .container2{
+  max-width: 1140px;
+  margin: 0 auto; padding: 0 1rem;
+}
+.mission-values{ padding: 3rem 0; }
+.mission-values .values-list{
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+}
+.value-item{
+  background: #fff; border:1px solid var(--color-borde);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+.value-item h4{
+  margin:.2rem 0 .4rem;
+  color: var(--color-primario);
+}
+
+/* ===== Formularios (formulario.html) ===== */
+main[role="main"]{ max-width: 920px; }
+.form-label{
+  font-weight: 600;
+  color: var(--color-primario);
+  margin-bottom: .35rem;
+}
+.form-control, .form-select, textarea{
+  background: var(--color-input-bg);
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radius);
+  padding: .7rem .9rem;
+  box-shadow: none !important;
+}
+.form-control::placeholder{ color:#5f5f5f; opacity:.8; }
+.form-control:focus, .form-select:focus, textarea:focus{
+  border-color: var(--color-accion);
+  outline: none;
+  box-shadow: 0 0 0 .2rem rgba(14,165,165,.15) !important;
+}
+
+/* Estados Bootstrap */
+.was-validated .form-control:valid, .form-control.is-valid{ border-color:#16a34a; }
+.was-validated .form-control:invalid, .form-control.is-invalid{ border-color:#dc2626; }
+.invalid-feedback{ font-size:.9rem; }
+
+/* ===== Botones ===== */
+.btn{
+  font-family: var(--ff-base);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--btn-ls);
+  border-radius: calc(var(--radius) - 2px);
+  padding: .75rem 1.1rem;
+  transition: transform .05s ease, background-color .2s ease, border-color .2s ease;
+}
+.btn-primary{
+  background-color: var(--color-accion) !important;
+  border-color: var(--color-accion) !important;
+  color: #fff !important;
+}
+.btn-primary:hover{
+  background-color: var(--color-accion-hov) !important;
+  border-color: var(--color-accion-hov) !important;
+  transform: translateY(-1px);
+}
+.btn-outline-primary{
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+  background: transparent;
+}
+.btn-outline-primary:hover{
+  background: var(--color-primario);
+  color:#fff;
+}
+
+/* ===== Cards / bloques genéricos ===== */
+.card{
+  background: var(--color-acento);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.card-header{
+  background: var(--color-primario);
+  color: #fff;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+/* ===== Página de Planes (nuestros-planes.html) ===== */
+/* Si tu <main> incluye aria-label="Planes de servicio", estos estilos aplican */
+body.planes{
+  min-height:100vh;
+  display:flex; flex-direction:column;
+}
+h1.page-title{
+  text-align:center; margin-top: 30px; margin-bottom: 10px;
+}
+main[aria-label="Planes de servicio"]{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 40px 0;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+main[aria-label="Planes de servicio"] .card{
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-soft);
+  border-radius: 20px;
+  padding: 22px 20px 28px;
+  display:flex; flex-direction:column; align-items:stretch;
+}
+main[aria-label="Planes de servicio"] .card .card-header{
+  background: transparent;
+  color: var(--color-primario);
+  text-align:center;
+  font-weight:700; font-size: 28px;
+  border: none; padding: 6px 0 14px;
+}
+main[aria-label="Planes de servicio"] .price{
+  text-align:center;
+  font-size: 38px; font-weight: 800;
+  margin: 6px 0 16px; color: var(--color-primario);
+}
+main[aria-label="Planes de servicio"] .per{ font-size:14px; font-weight:600; opacity:.8; }
+main[aria-label="Planes de servicio"] .features{
+  list-style: none; padding:0; margin: 6px 0 18px;
+}
+main[aria-label="Planes de servicio"] .features li{
+  display:flex; align-items:center; gap:10px;
+  padding:6px 0; border-bottom:1px solid #e6eef4;
+  font-size: 14px;
+}
+main[aria-label="Planes de servicio"] .features li:before{
+  content:""; width:12px; height:12px; border-radius:3px;
+  background: var(--color-accion);
+  display:inline-block; box-shadow: inset 0 0 0 2px #fff;
+}
+main[aria-label="Planes de servicio"] .btn{
+  margin: auto; display:inline-block;
+  padding: 14px 28px; border-radius: 999px;
+}
+
+/* Breakpoints */
+@media (max-width: 980px){
+  main[aria-label="Planes de servicio"]{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  main[aria-label="Planes de servicio"]{ grid-template-columns: 1fr; }
+  h1.page-title{ font-size: 2rem; margin-top: 20px; margin-bottom: 8px; }
+}
+
+/* ===== Tablas (si las usás) ===== */
+table{ background:#fff; border-radius: var(--radius); overflow: hidden; }
+thead th{
+  background: var(--color-secundario); color:#fff; border:none;
+}
+tbody tr:nth-child(even){ background: rgba(0,0,0,.03); }
+th, td{ padding: .8rem 1rem; }
+
+/* ===== Utilidades ===== */
+.bg-crema{ background: var(--color-fondo) !important; }
+.bg-arena{ background: var(--color-acento) !important; }
+.text-base{ color: var(--color-texto) !important; }
+.text-primario{ color: var(--color-primario) !important; }
+.text-secundario{ color: var(--color-secundario) !important; }
+
+/* Accesibilidad: foco visible para todo lo interactivo */
+:where(a, button, .btn, input, select, textarea):focus-visible{
+  outline: 3px solid rgba(14,165,165,.45);
+  outline-offset: 2px;
+}
