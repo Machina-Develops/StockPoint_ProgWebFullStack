@@ -8,8 +8,8 @@ class Usuario:
         self.id_usuario = id_usuario
         self.nombre_usuario = nombre_usuario
         self.email = email
-        self.contrasena_hash = contrasena_hash  # hash SHA-256 en hex
-        self.rol = rol  # 'administrador' o 'estandar'
+        self.contrasena_hash = contrasena_hash  
+        self.rol = rol 
 
     def verificar_contrasena(self, contrasena: str, hashear_func) -> bool:
         """
@@ -20,3 +20,4 @@ class Usuario:
 
     def __repr__(self) -> str:
         return f"Usuario(id={self.id_usuario}, nombre='{self.nombre_usuario}', rol='{self.rol}')"
+

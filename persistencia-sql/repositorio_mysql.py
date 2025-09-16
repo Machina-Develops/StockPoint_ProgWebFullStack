@@ -17,11 +17,23 @@ class RepositorioUsuarios:
         with get_connection() as conn, conn.cursor() as cur:
             cur.execute(sql, (nombre_usuario, email, contrasena_hash, rol))
             new_id = cur.lastrowid
-        return Usuario(id_usuario=new_id, nombre_usuario=nombre_usuario, email=email, contrasena_hash=contrasena_hash, rol=rol)
+        return Usuario(
+            id_usuario=new_id,
+            nombre_usuario=nombre_usuario,
+            email=email,
+            contrasena_hash=contrasena_hash,
+            rol=rol
+        )
 
     # READ
     def _row_to_usuario(self, row) -> Usuario:
-        return Usuario(id_usuario=row[0], nombre_usuario=row[1], email=row[2], contrasena_hash=row[3], rol=row[4])
+        return Usuario(
+            id_usuario=row[0],
+            nombre_usuario=row[1],
+            email=row[2],
+            contrasena_hash=row[3],
+            rol=row[4]
+        )
 
     def buscar_por_nombre(self, nombre_usuario: str) -> Optional[Usuario]:
         sql = "SELECT id, nombre_usuario, email, contrasena_hash, rol FROM usuarios WHERE nombre_usuario = %s LIMIT 1"
@@ -48,6 +60,20 @@ class RepositorioUsuarios:
         sql = "UPDATE usuarios SET rol = %s WHERE id = %s"
         with get_connection() as conn, conn.cursor() as cur:
             cur.execute(sql, (nuevo_rol, id_usuario))
+            return cur.rowcount == 1
+
+    # NUEVO: actualizar mis datos (nombre y email)
+    def actualizar_mis_datos(self, id_usuario: int, nombre_usuario: str, email: str) -> bool:
+        sql = "UPDATE usuarios SET nombre_usuario = %s, email = %s WHERE id = %s"
+        with get_connection() as conn, conn.cursor() as cur:
+            cur.execute(sql, (nombre_usuario, email, id_usuario))
+            return cur.rowcount == 1
+
+    # NUEVO: actualizar contraseña (hash)
+    def actualizar_contrasena(self, id_usuario: int, nuevo_hash: str) -> bool:
+        sql = "UPDATE usuarios SET contrasena_hash = %s WHERE id = %s"
+        with get_connection() as conn, conn.cursor() as cur:
+            cur.execute(sql, (nuevo_hash, id_usuario))
             return cur.rowcount == 1
 
     # DELETE

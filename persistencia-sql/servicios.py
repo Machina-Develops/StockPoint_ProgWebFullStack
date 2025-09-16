@@ -58,3 +58,31 @@ class ServicioUsuarios:
 
     def eliminar_usuario(self, id_usuario: int) -> bool:
         return self.__repositorio.eliminar_por_id(id_usuario)
+
+    def actualizar_mis_datos(self, id_usuario: int, nombre_usuario: str, email: str) -> str | bool:
+        try:
+            ok = self.__repositorio.actualizar_mis_datos(id_usuario, nombre_usuario, email)
+            return ok or "No se guardaron cambios."
+        except Exception as e:
+            msg = str(e)
+            if "Duplicate" in msg or "1062" in msg:
+                return "Error: ese nombre de usuario o email ya está en uso."
+            return f"Error de base de datos: {msg}"
+    
+    def cambiar_mi_contrasena(self, id_usuario: int, contrasena_actual: str, contrasena_nueva: str) -> str | bool:
+        # Validamos credenciales actuales
+        u = self.__repositorio.buscar_por_id(id_usuario)
+        if not u:
+            return "Error: usuario no encontrado."
+        if not u.verificar_contrasena(contrasena_actual, self._hashear_contrasena):
+            return "Error: la contraseña actual no es correcta."
+
+        # Validamos la nueva
+        if not self._validar_contrasena(contrasena_nueva):
+            return "Error: la nueva contraseña no cumple los requisitos (mín. 6, letras y números)."
+
+        # Guardamos
+        nuevo_hash = self._hashear_contrasena(contrasena_nueva)
+        ok = self.__repositorio.actualizar_contrasena(id_usuario, nuevo_hash)
+        return ok or "No se guardaron cambios."
+

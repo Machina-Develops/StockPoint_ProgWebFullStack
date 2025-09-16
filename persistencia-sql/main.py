@@ -61,17 +61,44 @@ def gestionar_inicio_sesion(servicio: ServicioUsuarios):
 def menu_estandar(servicio: ServicioUsuarios, usuario):
     print(f"--- MENÚ DE USUARIO: {usuario.nombre_usuario} ---")
     print("1. Ver mis datos")
-    print("2. Cerrar Sesión")
+    print("2. Editar mis datos (nombre y email)")
+    print("3. Cambiar mi contraseña")
+    print("4. Cerrar Sesión")
     opcion = input("Seleccione una opción: ")
+
     if opcion == '1':
         print(f"\nID: {usuario.id_usuario}")
         print(f"Nombre: {usuario.nombre_usuario}")
         print(f"Email: {usuario.email}")
         print(f"Rol: {usuario.rol}")
         input("\nPresione Enter para continuar...")
+
     elif opcion == '2':
+        nuevo_nombre = input("Nuevo nombre de usuario: ")
+        nuevo_email = input("Nuevo email: ")
+        resultado = servicio.actualizar_mis_datos(usuario.id_usuario, nuevo_nombre, nuevo_email)
+        if resultado is True:
+            print("\nDatos actualizados.")
+            # Actualizamos el objeto en memoria para que el menú refleje cambios
+            usuario.nombre_usuario = nuevo_nombre
+            usuario.email = nuevo_email
+        else:
+            print(f"\n{resultado}")
+        input("\nPresione Enter para continuar...")
+
+    elif opcion == '3':
+        from getpass import getpass
+        actual = getpass("Contraseña actual: ")
+        nueva = getpass("Nueva contraseña: ")
+        resultado = servicio.cambiar_mi_contrasena(usuario.id_usuario, actual, nueva)
+        print("\nContraseña actualizada." if resultado is True else f"\n{resultado}")
+        input("\nPresione Enter para continuar...")
+
+    elif opcion == '4':
         return None
+
     return usuario
+
 
 def menu_administrador(servicio: ServicioUsuarios, usuario):
     print(f"--- MENÚ DE ADMINISTRADOR: {usuario.nombre_usuario} ---")
