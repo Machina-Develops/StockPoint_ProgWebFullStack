@@ -1,2 +1,12 @@
 persistencia-sql/__pycache__/usuario.cpython-313.pyc
 persistencia-sql/__pycache__/db.cpython-313.pyc
+
+persistencia-sql/__pycache__/db.cpython-313.pyc
+persistencia-sql/__pycache__/usuario.cpython-313.pyc
+
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.vscode/
+
